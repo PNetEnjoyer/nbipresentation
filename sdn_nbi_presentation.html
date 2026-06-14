@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDN North Bound Interface - Interactive Report</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+stone: {
+50: '#fafaf9',
+100: '#f5f5f4',
+800: '#292524',
+900: '#1c1917',
+},
+teal: {
+600: '#0d9488',
+700: '#0f766e',
+},
+amber: {
+500: '#f59e0b',
+}
+},
+fontFamily: {
+sans: ['Inter', 'system-ui', 'sans-serif'],
+}
+}
+}
+}
+</script>
+<style>
+body {
+background-color: #fafaf9;
+color: #292524;
+}
+.chart-container {
+position: relative;
+width: 100%;
+max-width: 800px;
+margin-left: auto;
+margin-right: auto;
+height: 50vh;
+max-height: 400px;
+min-height: 300px;
+}
+.waterfall-step {
+transition: all 0.3s ease;
+}
+.waterfall-step.active {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3);
+border-color: #0d9488;
+background-color: #f0fdfa;
+}
+</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+<!-- Chosen Palette: Warm Neutrals (Stone) as base, Teal for positive actions/compliance, Amber for warnings/latency, ensuring calm harmony. -->
+<!-- Application Structure Plan: A linear storytelling dashboard. Sequences through Problem -> Infrastructure -> Waterfall Architecture -> Local Execution -> External Telemetry -> Cloud NAC PoC. Integrates uploaded lab and dashboard images alongside interactive charts to validate operational results and theoretical architectures. -->
+<!-- Visualization & Content Choices: Report Info: Security Compliance -> Goal: Compare -> Viz: Bar Chart & Screenshots -> Library: Chart.js & HTML img. Report Info: Execution Latency -> Goal: Compare -> Viz: Grouped Bar Chart -> Library: Chart.js. Report Info: NAC PoC Strategies -> Goal: Organize -> Viz: Interactive HTML/Tailwind Cards. Confirming NO SVG/Mermaid used. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<nav class="sticky top-0 z-50 bg-stone-50/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex-shrink-0 font-bold text-xl tracking-tight text-teal-700">
+SDN NBI Framework
+</div>
+<div class="hidden md:flex space-x-6 overflow-x-auto">
+<a href="#overview" class="text-stone-600 hover:text-teal-600 px-2 py-2 text-sm font-medium transition-colors">Overview</a>
+<a href="#infrastructure" class="text-stone-600 hover:text-teal-600 px-2 py-2 text-sm font-medium transition-colors">Infrastructure</a>
+<a href="#architecture" class="text-stone-600 hover:text-teal-600 px-2 py-2 text-sm font-medium transition-colors">Architecture</a>
+<a href="#execution" class="text-stone-600 hover:text-teal-600 px-2 py-2 text-sm font-medium transition-colors">Local Execution</a>
+<a href="#telemetry" class="text-stone-600 hover:text-teal-600 px-2 py-2 text-sm font-medium transition-colors">Telemetry</a>
+<a href="#cloud-nac" class="text-stone-600 hover:text-teal-600 px-2 py-2 text-sm font-medium transition-colors">Cloud NAC</a>
+</div>
+</div>
+</div>
+</nav>
+
+<main class="flex-grow">
+<header id="overview" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
+<div class="inline-block p-3 rounded-full bg-teal-100 text-teal-800 text-3xl mb-6">🌐</div>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-stone-900">
+Bridging the State Extraction Gap
+</h1>
+<p class="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto mb-10">
+An interactive exploration of a custom network automation framework engineered via the XIQ-SE North Bound Interface.
+</p>
+
+<div class="mt-8">
+<h3 class="font-bold text-2xl mb-6 text-stone-900 text-left">Objectives</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-10">
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+<div class="text-2xl mb-2">⚙️</div>
+<h4 class="font-bold text-lg mb-2">Programmatic Workflows</h4>
+<p class="text-stone-600 text-sm">Abstract manual multi-vendor network administration into unified, automated execution pipelines.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+<div class="text-2xl mb-2">📊</div>
+<h4 class="font-bold text-lg mb-2">External Visualization</h4>
+<p class="text-stone-600 text-sm">Export localized execution telemetry to an Elastic Stack for long-term historical trend analysis.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+<div class="text-2xl mb-2">🔐</div>
+<h4 class="font-bold text-lg mb-2">NAC Integration</h4>
+<ul class="text-stone-600 text-sm list-disc pl-4 space-y-1">
+<li><strong>Graph API Workflows:</strong> Programmatic extraction of EntraID user identities and Intune compliance states.</li>
+<li><strong>Zero-Caching PoC:</strong> Architectural strategies for stateless Cloud Network Access Control enforcement.</li>
+</ul>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+<div class="bg-stone-50 p-6 rounded-2xl shadow-sm border border-stone-200">
+<div class="text-2xl mb-2">🏗️</div>
+<h3 class="font-bold text-lg mb-2">Methodology</h3>
+<p class="text-stone-700 text-sm">Deploy a multi-protocol fallback architecture (NBI -> RESTCONF -> JSON-RPC -> CLI) to circumvent API fragmentation across heterogeneous hardware baselines.</p>
+</div>
+<div class="bg-stone-50 p-6 rounded-2xl shadow-sm border border-stone-200">
+<div class="text-2xl mb-2">📈</div>
+<h3 class="font-bold text-lg mb-2">Key Outcomes</h3>
+<p class="text-stone-700 text-sm">Achieved 100% success identifying stale ports, doubled baseline security compliance, and established functional zero-caching NAC strategies.</p>
+</div>
+</div>
+</div>
+</header>
+
+<section id="infrastructure" class="py-16 bg-stone-100 border-y border-stone-200">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-12 items-center">
+<div class="w-full">
+<h2 class="text-3xl font-bold text-stone-900 mb-4">Laboratory Infrastructure</h2>
+<p class="text-lg text-stone-700 mb-6">
+To expose specific API and firmware constraints, the framework was deployed against a physical laboratory topology rather than a simulated environment.
+</p>
+<ul class="list-disc list-inside text-stone-600 space-y-3">
+<li><strong>Scale:</strong> 7 physical switches operating across 286 active interfaces.</li>
+<li><strong>Multi-Vendor Environment:</strong> Integrated ExtremeXOS, VOSS platforms, and a Cisco Catalyst running Cisco IOS to evaluate architectural extensibility against non-native API structures across different OSes.</li>
+<li><strong>Firmware Disparity:</strong> Exposed state extraction limits by mixing hardware lifecycles, specifically contrasting legacy hardware (X460-G1 capped to EXOS 16) with modern platforms (X450-G2 running latest versions).</li>
+</ul>
+</div>
+<div class="w-full">
+<img src="https://nbireport.blob.core.windows.net/nbi/labInfrastructure.jpg?sp=r&st=2026-06-14T03:06:41Z&se=2027-06-14T11:21:41Z&sv=2026-02-06&sr=b&sig=6P4oYIpQboxYyuaWEVupdKawPoOXLIGjtjQ0%2Fz2LA0g%3D" alt="Laboratory Infrastructure" class="w-full h-auto rounded-xl shadow-md border border-stone-200 object-cover">
+<p class="text-sm text-stone-500 mt-3 text-center">Physical topology deployed for operational validation.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="architecture" class="py-16 bg-white border-b border-stone-200">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-10 text-center">
+<h2 class="text-3xl font-bold text-stone-900 mb-4">The Multi-Protocol Waterfall Architecture</h2>
+<p class="text-lg text-stone-700 max-w-3xl mx-auto">
+The core engineering solution to API fragmentation. The script evaluates devices by cascading through protocols, prioritizing state extraction success over protocol strictness. Click on the steps to view extraction logic.
+</p>
+</div>
+
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-12">
+<div id="step-nbi" class="waterfall-step active w-full md:w-1/4 bg-stone-50 border border-stone-200 rounded-xl p-6 text-center cursor-pointer">
+<div class="text-2xl mb-2">🔗</div>
+<div class="font-bold text-stone-800">1. NBI (GraphQL)</div>
+</div>
+<div class="text-stone-400 hidden md:block text-2xl">➔</div>
+<div class="text-stone-400 md:hidden text-2xl">⬇</div>
+<div id="step-rest" class="waterfall-step w-full md:w-1/4 bg-stone-50 border border-stone-200 rounded-xl p-6 text-center cursor-pointer">
+<div class="text-2xl mb-2">🌐</div>
+<div class="font-bold text-stone-800">2. RESTCONF</div>
+</div>
+<div class="text-stone-400 hidden md:block text-2xl">➔</div>
+<div class="text-stone-400 md:hidden text-2xl">⬇</div>
+<div id="step-rpc" class="waterfall-step w-full md:w-1/4 bg-stone-50 border border-stone-200 rounded-xl p-6 text-center cursor-pointer">
+<div class="text-2xl mb-2">⚙️</div>
+<div class="font-bold text-stone-800">3. JSON-RPC</div>
+</div>
+<div class="text-stone-400 hidden md:block text-2xl">➔</div>
+<div class="text-stone-400 md:hidden text-2xl">⬇</div>
+<div id="step-cli" class="waterfall-step w-full md:w-1/4 bg-stone-50 border border-stone-200 rounded-xl p-6 text-center cursor-pointer">
+<div class="text-2xl mb-2">⌨️</div>
+<div class="font-bold text-stone-800">4. CLI (Regex)</div>
+</div>
+</div>
+
+<div class="bg-stone-800 text-stone-100 p-8 rounded-2xl min-h-[150px] flex items-center justify-center">
+<div id="waterfall-description" class="text-center text-lg max-w-2xl">
+Select a stage in the waterfall architecture above to view protocol fallback execution.
+</div>
+</div>
+</div>
+</section>
+
+<section id="execution" class="py-16 bg-stone-50 border-b border-stone-200">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-10 text-center">
+<h2 class="text-3xl font-bold text-stone-900 mb-4">Local Execution Workflows</h2>
+<p class="text-lg text-stone-700 max-w-3xl mx-auto">
+The architecture abstracts manual operations into a series of functional Python workflows. These scripts execute locally on the XIQ-SE engine, applying the waterfall methodology to ensure reliable task completion across the fabric.
+</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+<h4 class="text-lg font-bold text-teal-700 mb-2">Unused Ports</h4>
+<p class="text-sm text-stone-700">Identifies and dynamically disables stale access ports, eliminating residual Layer 2 attack surfaces without operator intervention.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+<h4 class="text-lg font-bold text-teal-700 mb-2">WLAN Topology Mapping</h4>
+<p class="text-sm text-stone-700">Maps physical and logical Wireless Local Area Network structures. Extracts radio, SSID, and access point adjacencies to reconstruct real-time topologies.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+<h4 class="text-lg font-bold text-teal-700 mb-2">Security Compliance</h4>
+<p class="text-sm text-stone-700">Evaluates the infrastructure against predefined policy matrices and enforces compliance via OS-specific correction commands.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+<h4 class="text-lg font-bold text-teal-700 mb-2">SFP Discovery</h4>
+<p class="text-sm text-stone-700">Extracts optical Rx/Tx power, voltage, and temperature metrics. Maps physical transceiver connection points across the fabric and bypasses API limitations to monitor hardware degradation.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+<h4 class="text-lg font-bold text-teal-700 mb-2">Legacy VSP Switches</h4>
+<p class="text-sm text-stone-700">Enforces configuration consistency and executes targeted state extraction workflows specifically tailored for legacy Avaya/Extreme VSP hardware platforms.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+<h4 class="text-lg font-bold text-teal-700 mb-2">EntraID User Validation</h4>
+<p class="text-sm text-stone-700">Queries Microsoft EntraID via the Graph API. Retrieves definitive user identity and authorization context for stateless network access processing.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+<h4 class="text-lg font-bold text-teal-700 mb-2">Intune Device Compliance Check</h4>
+<p class="text-sm text-stone-700">Queries Microsoft Intune to determine real-time endpoint health. Provides the definitive compliance state required to authorize or quarantine network access.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="telemetry" class="py-16 bg-white border-b border-stone-200">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-10 text-center">
+<h2 class="text-3xl font-bold text-stone-900 mb-4">External Integration (Elastic Stack)</h2>
+<p class="text-lg text-stone-700 max-w-4xl mx-auto">
+Execution telemetry is offloaded to an external Elastic Stack via the PushToElastic workflow. This provides network-wide visibility into port utilization and historical security compliance.
+</p>
+</div>
+
+<div class="flex flex-col gap-16 mt-8">
+<div class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-200">
+<h3 class="text-2xl font-bold text-stone-800 mb-6">Kibana: Security Compliance Dashboard</h3>
+<img src="https://nbireport.blob.core.windows.net/nbi/SecurityCompliance.png?sp=r&st=2026-06-14T03:03:51Z&se=2027-06-14T11:18:51Z&sv=2026-02-06&sr=b&sig=9T1%2FVao4PGr5e4arqF0IOJsPbzq985nsv83wurK0iXI%3D" alt="Kibana dashboard visualizing security compliance" class="w-full h-auto rounded border border-stone-200 mb-8 object-contain">
+<div class="chart-container">
+<canvas id="complianceChart"></canvas>
+</div>
+<p class="text-base text-stone-600 mt-6">Baseline compliance doubled automatically. Remaining non-compliant fractions represent policies flagged for manual organizational approval.</p>
+</div>
+
+<div class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-200">
+<h3 class="text-2xl font-bold text-stone-800 mb-6">Kibana: Unused Ports Dashboard</h3>
+<img src="https://nbireport.blob.core.windows.net/nbi/UnusedPorts.png?sp=r&st=2026-06-14T03:05:59Z&se=2027-06-14T11:20:59Z&sv=2026-02-06&sr=b&sig=1f%2Fm0nmZJgvCcY1jr7yuHdfPdYTK16OhMQbTQg5o0KU%3D" alt="Kibana dashboard visualizing unused port metrics" class="w-full h-auto rounded border border-stone-200 object-contain">
+</div>
+
+<div class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-200">
+<h3 class="text-2xl font-bold text-stone-800 mb-4">Execution Latency by Extraction Method</h3>
+<p class="text-base text-stone-600 mb-6">Execution scaling relies heavily on extraction protocol. Cisco IOS mandates manual CLI Regex parsing, introducing significant latency compared to Extreme EXOS APIs.</p>
+<div class="chart-container">
+<canvas id="latencyChart"></canvas>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cloud-nac" class="py-16 bg-stone-100">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-10 text-center">
+<h2 class="text-3xl font-bold text-stone-900 mb-4">Cloud Identity & NAC Zero-Caching PoC</h2>
+<p class="text-lg text-stone-700 max-w-4xl mx-auto">
+Current NAC implementations incur operational latency through persistent database caching. Workflows were developed utilizing the Microsoft Graph API to extract user identities from EntraID and compliance policies from Intune, establishing a stateless enforcement pipeline.
+</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div id="poc-1" class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+<div class="text-xl font-bold text-teal-700 mb-4">1. Layer 7 Portal</div>
+<p class="text-stone-700 text-base mb-6">SSO integration pushing authorization states directly into NAC via the NBI.</p>
+<ul class="text-sm text-stone-600 space-y-3 list-disc pl-4">
+<li>Captive portal intercepts unauthenticated devices.</li>
+<li>Forces native EntraID OAuth/SAML authentication.</li>
+<li>Middleware verifies Intune status via Graph API and issues CoA.</li>
+</ul>
+</div>
+
+<div id="poc-2" class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+<div class="text-xl font-bold text-teal-700 mb-4">2. Event-Driven Hybrid</div>
+<p class="text-stone-700 text-base mb-6">Acts as LDAP compatibility middleware bridging cloud identity with legacy 802.1X.</p>
+<ul class="text-sm text-stone-600 space-y-3 list-disc pl-4">
+<li>Proxies LDAPS to Entra Domain Services.</li>
+<li>NAC provisions restricted 'Evaluating' policy upon initial Accept.</li>
+<li>Graph API queried in near real-time. CoA transitions to production upon compliance.</li>
+</ul>
+</div>
+
+<div id="poc-3" class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+<div class="text-xl font-bold text-teal-700 mb-4">3. Cryptographic Offloading</div>
+<p class="text-stone-700 text-base mb-6">Certificate-based validation utilizing an external proxy RADIUS service.</p>
+<ul class="text-sm text-stone-600 space-y-3 list-disc pl-4">
+<li>Endpoint enrolls via SCEP, obtaining X.509 with Entra Device ID.</li>
+<li>NAC acts as stateless RADIUS proxy.</li>
+<li>External daemon extracts Device ID, queries Intune, returns Accept/Reject.</li>
+</ul>
+</div>
+</div>
+
+<div class="mt-12 bg-white p-8 rounded-2xl shadow-sm border border-stone-200 text-center">
+<h3 class="text-2xl font-bold text-stone-800 mb-4">Conclusion</h3>
+<p class="text-lg text-stone-600 max-w-3xl mx-auto italic">
+Enterprise networks remain fragmented despite the push toward standardized APIs. This project addressed that reality by implementing a multi-protocol automation framework that achieved state extraction across all evaluated devices, automated operational and security workflows, and extended XIQ-SE with external observability capabilities. The results demonstrate that effective network automation depends not on a single interface, but on adaptive architectures capable of operating across heterogeneous environments.
+</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="bg-stone-900 text-stone-400 py-8 text-center border-t border-stone-800">
+<p class="text-sm">SDN North Bound Interface Framework</p>
+<p class="text-xs mt-2">Operational Analytics & PoC Dashboards</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+const steps = {
+'step-nbi': "NBI (GraphQL): Prioritized for minimal latency and centralized querying. Schema heavily favors native Extreme hardware. Frequently omits deep diagnostic data for third-party endpoints.",
+'step-rest': "RESTCONF: Standardized YANG data models. Validation reveals unresolved hierarchical paths across disparate firmware versions, yielding HTTP 401/404 errors.",
+'step-rpc': "JSON-RPC: Translates CLI command structures into native JSON. Efficacy restricted exclusively to specific vendor operating systems (EXOS).",
+'step-cli': "CLI (Regex): Direct SSH terminal parsing. Implemented when modern APIs fail or to extract parameters unmapped by standard models, including on bleeding-edge hardware. Ensures absolute state extraction."
+};
+
+const descriptionBox = document.getElementById('waterfall-description');
+const stepElements = document.querySelectorAll('.waterfall-step');
+
+descriptionBox.innerHTML = steps['step-nbi'];
+
+stepElements.forEach(step => {
+step.addEventListener('click', () => {
+stepElements.forEach(el => el.classList.remove('active'));
+step.classList.add('active');
+descriptionBox.innerHTML = steps[step.id];
+descriptionBox.classList.add('animate-pulse');
+setTimeout(() => descriptionBox.classList.remove('animate-pulse'), 300);
+});
+});
+
+const ctxCompliance = document.getElementById('complianceChart').getContext('2d');
+new Chart(ctxCompliance, {
+type: 'bar',
+data: {
+labels: ['Baseline (Pre-Automation)', 'Post-Remediation'],
+datasets: [{
+label: 'Network Security Compliance (%)',
+data: [32.0, 67.11],
+backgroundColor: [
+'rgba(245, 158, 11, 0.8)',
+'rgba(13, 148, 136, 0.8)'
+],
+borderColor: [
+'rgb(245, 158, 11)',
+'rgb(13, 148, 136)'
+],
+borderWidth: 1,
+borderRadius: 4
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: { display: false },
+tooltip: {
+callbacks: {
+label: function(context) {
+return context.parsed.y + '% Compliance';
+}
+}
+}
+},
+scales: {
+y: {
+beginAtZero: true,
+max: 100,
+title: { display: true, text: 'Compliance Percentage' }
+}
+}
+}
+});
+
+const ctxLatency = document.getElementById('latencyChart').getContext('2d');
+new Chart(ctxLatency, {
+type: 'bar',
+data: {
+labels: ['Unused Ports', 'Security Hardening', 'SFP Discovery'],
+datasets: [
+{
+label: 'Extreme EXOS (APIs)',
+data: [3, 5, 9],
+backgroundColor: 'rgba(13, 148, 136, 0.8)',
+borderColor: 'rgb(13, 148, 136)',
+borderWidth: 1,
+borderRadius: 4
+},
+{
+label: 'Cisco IOS (CLI Regex)',
+data: [27, 21, 3],
+backgroundColor: 'rgba(41, 37, 36, 0.8)',
+borderColor: 'rgb(41, 37, 36)',
+borderWidth: 1,
+borderRadius: 4
+}
+]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+tooltip: {
+callbacks: {
+label: function(context) {
+return context.dataset.label + ': ' + context.parsed.y + ' seconds';
+}
+}
+}
+},
+scales: {
+y: {
+beginAtZero: true,
+title: { display: true, text: 'Execution Time (Seconds)' }
+}
+}
+}
+});
+});
+</script>
+</body>
+</html>
