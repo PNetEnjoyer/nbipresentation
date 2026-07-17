@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>SDN North Bound Interface - Interactive Report</title>
+		<title>Explicit Network Automation - Interactive Report</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script>
@@ -114,11 +114,11 @@
 				<h1
 					class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-stone-900"
 				>
-					Bridging the State Extraction Gap
+					Explicit Network Automation
 				</h1>
 
 				<p class="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto mb-16">
-					Overcoming API fragmentation through adaptive network automation.
+					Overcoming API fragmentation, orchestrating configurations, and complex telemetry reporting across fragmented enterprise infrastructures.
 				</p>
 
 				<!-- Introductory Sections -->
@@ -155,7 +155,7 @@
 							human input. Offloading repetitive tasks to a deterministic system
 							increases precision, ensures consistency, and reduces human error.
 						</p>
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
 								<h4 class="font-bold text-lg text-purple-700 mb-2">
 									Implicit Automation
@@ -173,6 +173,14 @@
 									Management-plane operations executed through external control
 									logic. Utilizes imperative instructions to invoke
 									configuration, monitoring, or remediation tasks on devices.
+								</p>
+							</div>
+                            <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+								<h4 class="font-bold text-lg text-purple-700 mb-2">
+									Intent-Based Networking (IBN)
+								</h4>
+								<p class="text-sm text-stone-600">
+									A declarative operational model. Administrators define the desired network state (intent), and the underlying system automatically translates, executes, and verifies the device-specific configurations.
 								</p>
 							</div>
 						</div>
@@ -597,21 +605,26 @@
 						</div>
 					</div>
 
-					<div
-						class="mt-12 bg-white p-8 rounded-2xl shadow-sm border border-stone-200 text-center"
-					>
-						<h3 class="text-2xl font-bold text-stone-800 mb-4">Conclusion</h3>
-						<p class="text-lg text-stone-600 max-w-3xl mx-auto italic">
-							Enterprise networks remain fragmented despite the push toward
-							standardized APIs. This project addressed that reality by
-							implementing a multi-protocol automation framework that achieved
-							state extraction across all evaluated devices, automated
-							operational and security workflows, and extended XIQ-SE with
-							external observability capabilities. The results demonstrate that
-							effective network automation depends not on a single interface,
-							but on adaptive architectures capable of operating across
-							heterogeneous environments.
-						</p>
+					<div class="mt-12 bg-white p-8 rounded-2xl shadow-sm border border-stone-200 text-left">
+						<h3 class="text-2xl font-bold text-stone-800 mb-6 text-center">Outcomes</h3>
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+								<h4 class="font-bold text-lg text-purple-700 mb-2">Deterministic State Extraction</h4>
+								<p class="text-sm text-stone-700">Achieved complete state visibility across heterogeneous hardware, bypassing API fragmentation via a multi-protocol fallback architecture.</p>
+							</div>
+							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+								<h4 class="font-bold text-lg text-purple-700 mb-2">Automated Remediation</h4>
+								<p class="text-sm text-stone-700">Deployed state-dependent configuration modules to programmatically enforce infrastructure policies and dynamically remediate operational anomalies across the multi-vendor fabric.</p>
+							</div>
+							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+								<h4 class="font-bold text-lg text-purple-700 mb-2">Decoupled Observability</h4>
+								<p class="text-sm text-stone-700">Established a centralized telemetry pipeline utilizing Elasticsearch and Kibana to create custom dashboards, enable long-term historical analytics and time-series network visibility.</p>
+							</div>
+							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+								<h4 class="font-bold text-lg text-purple-700 mb-2">Zero-Trust Foundation</h4>
+								<p class="text-sm text-stone-700">Engineered three distinct architectural frameworks designed to eliminate persistent NAC database caching, establishing the logic for stateless zero-trust enforcement.</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -620,7 +633,7 @@
 		<footer
 			class="bg-stone-900 text-stone-400 py-8 text-center border-t border-stone-800"
 		>
-			<p class="text-sm">SDN North Bound Interface Framework</p>
+			<p class="text-sm">Explicit Network Automation</p>
 			<p class="text-xs mt-2">
 				Operational Analytics Dashboards & Zero-Caching NAC
 			</p>
