@@ -70,7 +70,7 @@
 					>
 						SDN - North Bound Interface
 					</div>
-					<div class="hidden md:flex space-x-6 overflow-x-auto" id="nav-links">
+						
 						<a
 							href="#overview"
 							class="nav-item text-purple-600 font-bold px-2 py-2 text-sm transition-colors"
@@ -82,9 +82,9 @@
 							>Infrastructure</a
 						>
 						<a
-							href="#architecture"
+							href="#state-extraction"
 							class="nav-item text-stone-600 hover:text-purple-600 px-2 py-2 text-sm font-medium transition-colors"
-							>Architecture</a
+							>State Extraction</a
 						>
 						<a
 							href="#execution"
@@ -92,15 +92,16 @@
 							>Workflows</a
 						>
 						<a
-							href="#telemetry"
+							href="#visualization"
 							class="nav-item text-stone-600 hover:text-purple-600 px-2 py-2 text-sm font-medium transition-colors"
-							>Telemetry</a
+							>Visualization</a
 						>
 						<a
 							href="#cloud-nac"
 							class="nav-item text-stone-600 hover:text-purple-600 px-2 py-2 text-sm font-medium transition-colors"
 							>Cloud NAC</a
 						>
+						<a href="#outcomes" class="nav-item text-stone-600 hover:text-purple-600 px-2 py-2 text-sm font-medium transition-colors">Outcomes</a>
 					</div>
 				</div>
 			</div>
@@ -112,14 +113,24 @@
 				class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center scroll-mt-16"
 			>
 				<div class="flex justify-center items-center gap-12 mb-8">
-					<img src="images/logoipt.png" alt="Instituto Politécnico de Tomar Logo" class="h-28 w-auto object-contain">
-					<img src="images/logoestt.png" alt="Escola Superior de Tecnologia de Tomar Logo" class="h-28 w-auto object-contain">
+					<img
+						src="images/logoipt.png"
+						alt="Instituto Politécnico de Tomar Logo"
+						class="h-28 w-auto object-contain"
+					/>
+					<img
+						src="images/logoestt.png"
+						alt="Escola Superior de Tecnologia de Tomar Logo"
+						class="h-28 w-auto object-contain"
+					/>
 				</div>
 				<br />
 				<div class="mb-12">
-					<p class="text-3xl font-bold text-stone-800">Pedro Cairrão & Paulo Pereira</p>
+					<p class="text-3xl font-bold text-stone-800">
+						Pedro Cairrão & Paulo Pereira
+					</p>
 				</div>
-<br />
+				<br />
 				<h1
 					class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-stone-900"
 				>
@@ -127,7 +138,9 @@
 				</h1>
 
 				<p class="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto mb-16">
-					Overcoming API fragmentation, orchestrating configurations, and complex telemetry reporting across fragmented enterprise infrastructures.
+					Overcoming API fragmentation, orchestrating configurations, and
+					complex telemetry reporting across fragmented enterprise
+					infrastructures.
 				</p>
 
 				<!-- Introductory Sections -->
@@ -289,7 +302,14 @@
 							})();
 						</script>
 						<p class="text-stone-700 text-lg mt-6">
-							Decreasing delivery timeframes intersect with continuous increases in technical complexity. Economic demands (faster time-to-market) and technical shifts (Robotic Process Automation, Infrastructure as Code, LLMs) strictly drive the requirement to optimize execution time via automation. While new technologies accelerate development and aid in navigating increasingly complex projects, they are taken for granted and ultimately end up further shirking the expected project deadlines.
+							Decreasing delivery timeframes intersect with continuous increases
+							in technical complexity. Economic demands (faster time-to-market)
+							and technical shifts (Robotic Process Automation, Infrastructure
+							as Code, LLMs) strictly drive the requirement to optimize
+							execution time via automation. While new technologies accelerate
+							development and aid in navigating increasingly complex projects,
+							they are taken for granted and ultimately end up further shirking
+							the expected project deadlines.
 						</p>
 					</div>
 
@@ -346,7 +366,21 @@
 						<div
 							class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100"
 						>
-							<h4 class="font-bold text-lg mb-2">Programmatic Workflows</h4>
+							<h4 class="font-bold text-lg text-purple-700 mb-2">
+								Provision XIQ-SE
+							</h4>
+							<p class="text-stone-600 text-sm">
+								Implement XIQ as the central management platform for networking
+								infrastructure, and onboard networking devices to its management
+								plane.
+							</p>
+						</div>
+						<div
+							class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100"
+						>
+							<h4 class="font-bold text-lg text-purple-700 mb-2">
+								Programmatic Workflows
+							</h4>
 							<p class="text-stone-600 text-sm">
 								Abstract manual multi-vendor network administration into
 								unified, automated execution pipelines.
@@ -355,10 +389,12 @@
 						<div
 							class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100"
 						>
-							<h4 class="font-bold text-lg mb-2">External Visualization</h4>
+							<h4 class="font-bold text-lg text-purple-700 mb-2">
+								External Visualization
+							</h4>
 							<p class="text-stone-600 text-sm">
-								Export localized execution telemetry to an Elastic Stack for
-								long-term historical trend analysis.
+								Export device state to an Elastic Stack for
+								reporting and long-term telemetry analysis.
 							</p>
 						</div>
 					</div>
@@ -369,8 +405,10 @@
 				id="infrastructure"
 				class="py-16 bg-stone-100 border-y border-stone-200 scroll-mt-16"
 			>
-				<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="flex flex-col gap-12 items-center">
+				<div
+					class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16"
+				>
+					<div class="flex flex-col gap-8 items-center">
 						<div class="w-full">
 							<h2 class="text-3xl font-bold text-stone-900 mb-4">
 								Laboratory Infrastructure
@@ -407,21 +445,20 @@
 							/>
 						</div>
 					</div>
-				</div>
-			</section>
 
-			<section
-				id="xiq-se"
-				class="py-16 bg-white border-b border-stone-200 scroll-mt-16"
-			>
-				<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="flex flex-col items-center">
+					<div
+						class="flex flex-col items-center bg-white p-8 rounded-2xl shadow-sm border border-stone-200"
+					>
 						<div class="w-full text-left">
 							<h2 class="font-bold text-3xl mb-4 text-stone-900">
 								XIQ Site Engine
 							</h2>
 							<p class="text-stone-700 text-lg mb-6">
-								Operates as an on-premise Network Management System handling device onboarding, providing a centralized management-plane, and driving the integrated workflow engine, alarms, AAA, and analytics. XIQ-SE is composed of several modules and appliances, and each extends the capabilities of XIQ-SE.
+								Operates as an on-premise Network Management System handling
+								device onboarding, providing a centralized management-plane, and
+								driving the integrated workflow engine, alarms, AAA, and
+								analytics. XIQ-SE is composed of several modules and appliances,
+								and each extends the capabilities of XIQ-SE.
 							</p>
 							<img
 								src="images/xiqse.png"
@@ -429,8 +466,8 @@
 								class="w-full max-w-4xl mx-auto h-auto rounded border border-stone-200 object-cover"
 							/>
 							<p class="text-xs text-stone-500 mt-3 text-center">
-								Source: XIQ-SE - Installation & Configuration Student Guide, 2025
-								Extreme Networks
+								Source: XIQ-SE - Installation & Configuration Student Guide,
+								2025 Extreme Networks
 							</p>
 						</div>
 					</div>
@@ -438,7 +475,7 @@
 			</section>
 
 			<section
-				id="architecture"
+				id="state-extraction"
 				class="py-16 bg-stone-50 border-b border-stone-200 scroll-mt-16"
 			>
 				<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -523,9 +560,12 @@
 						<div
 							class="bg-stone-50 p-6 rounded-xl shadow-sm border border-stone-200"
 						>
-							<h4 class="text-lg font-bold text-purple-700 mb-2">Unused Ports</h4>
+							<h4 class="text-lg font-bold text-purple-700 mb-2">
+								Unused Ports
+							</h4>
 							<p class="text-sm text-stone-700">
-								Identifies and dynamically disables stale access ports based on user defined thresholds.
+								Identifies and dynamically disables stale access ports based on
+								user defined thresholds.
 							</p>
 						</div>
 						<div
@@ -558,7 +598,9 @@
 								SFP Discovery
 							</h4>
 							<p class="text-sm text-stone-700">
-								Maps physical transceiver connection points across the network and extracts optical Rx/Tx power, voltage, and temperature metrics flagging health status warnings.
+								Maps physical transceiver connection points across the network
+								and extracts optical Rx/Tx power, voltage, and temperature
+								metrics flagging health status warnings.
 							</p>
 						</div>
 						<div
@@ -568,7 +610,9 @@
 								Legacy VSP Switches
 							</h4>
 							<p class="text-sm text-stone-700">
-								Discovers legacy Avaya VSP switches on the network (e.g., distinguishing older models from newer VSP 7400 and VSP 4900 series).
+								Discovers legacy Avaya VSP switches on the network (e.g.,
+								distinguishing older models from newer VSP 7400 and VSP 4900
+								series).
 							</p>
 						</div>
 						<div
@@ -578,17 +622,19 @@
 								EntraID User Validation
 							</h4>
 							<p class="text-sm text-stone-700">
-								Verifies if a user exists in EntraID via the Microsoft Graph API.
+								Verifies if a user exists in EntraID via the Microsoft Graph
+								API.
 							</p>
 						</div>
 						<div
 							class="bg-stone-50 p-6 rounded-xl shadow-sm border border-stone-200"
 						>
 							<h4 class="text-lg font-bold text-purple-700 mb-2">
-								Intune Device Compliance Check
+								Intune Device Compliance Policies
 							</h4>
 							<p class="text-sm text-stone-700">
-								Verifies which policies are being enforced, and not enforced by Microsoft Intune for device enrollment.
+								Verifies which policies are being enforced, and not enforced by
+								Microsoft Intune for device enrollment.
 							</p>
 						</div>
 						<div
@@ -598,7 +644,8 @@
 								Push to Elastic (Helper)
 							</h4>
 							<p class="text-sm text-stone-700">
-								Centralized transport workflow managing the Elasticsearch telemetry ingestion pipeline.
+								Centralized transport workflow managing the Elasticsearch
+								telemetry ingestion pipeline.
 							</p>
 						</div>
 						<div
@@ -608,94 +655,126 @@
 								Event Dispatcher (Helper)
 							</h4>
 							<p class="text-sm text-stone-700">
-								Bridges workflow executions with the centralized XIQ-SE Alarm management plane. Triggers pre-defined fault alarms for network operators.
+								Bridges workflow executions with the centralized XIQ-SE Alarm
+								management plane. Triggers pre-defined fault alarms for network
+								operators.
 							</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section id="internal-vis" class="py-16 bg-stone-100 border-b border-stone-200">
-				<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="mb-16 text-center">
-						<h2 class="text-3xl font-bold text-stone-900 mb-4">Internal Visualization - Workflow Output</h2>
-						<p class="text-lg text-stone-700 max-w-4xl mx-auto">
-							Automated workflow outputs are surfaced directly within the XIQ-SE management plane to provide immediate, localized execution feedback.
-						</p>
-					</div>
-					<div class="flex flex-col gap-12 mb-16">
-						<div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
-							<h3 class="text-xl font-bold text-stone-800 mb-4">Security Hardening (EXOS)</h3>
-							<img src="images/SecurityComplianceEXOS.png" alt="Security Hardening EXOS Output" class="w-full h-auto rounded border border-stone-200 object-contain mb-6 bg-stone-50">
+			<section id="visualization" class="scroll-mt-16">
+				<!-- Internal Visualization Section -->
+				<div class="py-16 bg-stone-100 border-b border-stone-200">
+					<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+						<div class="mb-16 text-center">
+							<h2 class="text-3xl font-bold text-stone-900 mb-4">
+								Internal Visualization - Workflow Output
+							</h2>
+							<p class="text-lg text-stone-700 max-w-4xl mx-auto">
+								Automated workflow outputs are surfaced directly within the
+								XIQ-SE management plane to provide immediate, localized
+								execution feedback.
+							</p>
 						</div>
-						<div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
-							<h3 class="text-xl font-bold text-stone-800 mb-4">Unused Ports (Cisco IOS)</h3>
-							<img src="images/UnusedPortsCisco.png" alt="Unused Ports Cisco Output" class="w-full h-auto rounded border border-stone-200 object-contain mb-6 bg-stone-50">
-						</div>
-					</div>
-
-					<div class="mb-10 text-center border-t border-stone-200 pt-16">
-						<h2 class="text-3xl font-bold text-stone-900 mb-4">Internal Visualization - Alarms</h2>
-						<p class="text-lg text-stone-700 max-w-4xl mx-auto">
-							Dispatched events trigger localized near real-time operational fault detection and security compliance alarms.
-						</p>
-					</div>
-				</div>
-				
-				<div class="w-full px-4 sm:px-6 lg:px-8">
-					<div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200 w-full">
-						<h3 class="text-xl font-bold text-stone-800 mb-4">Security Hardening Fault Alarms</h3>
-						<img src="images/AlarmsSecurityComplianceHoverDetails.png" alt="Security Hardening Alarms" class="w-full h-auto rounded border border-stone-200 object-contain bg-stone-50">
-					</div>
-				</div>
-			</section>
-
-			<section id="telemetry" class="py-16 bg-white border-b border-stone-200 scroll-mt-16">
-				<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="mb-10 text-center">
-						<h2 class="text-3xl font-bold text-stone-900 mb-4">
-							External Visualization - Elastic Stack
-						</h2>
-						<p class="text-lg text-stone-700 max-w-4xl mx-auto">
-							Execution telemetry is offloaded to Elastic Stack. This provides
-							complex data visualization, time-series aggregation, and
-							network-wide visibility long-term reporting.
-						</p>
-					</div>
-
-					<div class="flex flex-col gap-16 mt-8">
-						<div
-							class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-200"
-						>
-							<h3 class="text-2xl font-bold text-stone-800 mb-6">
-								Kibana: Unused Ports Dashboard
-							</h3>
-							<img
-								src="images/UnusedPorts.png"
-								alt="Kibana dashboard visualizing unused port metrics"
-								class="w-full h-auto rounded border border-stone-200 object-contain"
-							/>
-						</div>
-						
-						<div
-							class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-200"
-						>
-							<h3 class="text-2xl font-bold text-stone-800 mb-6">
-								Kibana: Security Compliance Dashboard
-							</h3>
-							<img
-								src="images/SecurityCompliance.png"
-								alt="Kibana dashboard visualizing security compliance"
-								class="w-full h-auto rounded border border-stone-200 mb-8 object-contain"
-							/>
-							<div class="chart-container">
-								<canvas id="complianceChart"></canvas>
+						<div class="flex flex-col gap-12 mb-16">
+							<div
+								class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200"
+							>
+								<h3 class="text-xl font-bold text-stone-800 mb-4">
+									Security Hardening (EXOS)
+								</h3>
+								<img
+									src="images/SecurityComplianceEXOS.png"
+									alt="Security Hardening EXOS Output"
+									class="w-full h-auto rounded border border-stone-200 object-contain mb-6 bg-stone-50"
+								/>
 							</div>
-							<p class="text-base text-stone-600 mt-6">
-								Baseline compliance doubled automatically. Remaining
-								non-compliant fractions represent policies flagged for manual
-								configuration.
+							<div
+								class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200"
+							>
+								<h3 class="text-xl font-bold text-stone-800 mb-4">
+									Unused Ports (Cisco IOS)
+								</h3>
+								<img
+									src="images/UnusedPortsCisco.png"
+									alt="Unused Ports Cisco Output"
+									class="w-full h-auto rounded border border-stone-200 object-contain mb-6 bg-stone-50"
+								/>
+							</div>
+						</div>
+
+						<div class="mb-10 text-center border-t border-stone-200 pt-16">
+							<h2 class="text-3xl font-bold text-stone-900 mb-4">
+								Internal Visualization - Alarms
+							</h2>
+							<p class="text-lg text-stone-700 max-w-4xl mx-auto">
+								Dispatched events trigger localized near real-time operational
+								fault detection and security compliance alarms.
 							</p>
+						</div>
+					</div>
+
+					<div class="w-full px-4 sm:px-6 lg:px-8">
+						<div
+							class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200 w-full"
+						>
+							<h3 class="text-xl font-bold text-stone-800 mb-4">
+								Security Hardening Fault Alarms
+							</h3>
+							<img
+								src="images/AlarmsSecurityComplianceHoverDetails.png"
+								alt="Security Hardening Alarms"
+								class="w-full h-auto rounded border border-stone-200 object-contain bg-stone-50"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<!-- External Visualization Section -->
+				<div class="py-16 bg-white border-b border-stone-200">
+					<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+						<div class="mb-10 text-center">
+							<h2 class="text-3xl font-bold text-stone-900 mb-4">
+								External Visualization - Elastic Stack
+							</h2>
+							<p class="text-lg text-stone-700 max-w-4xl mx-auto">
+								Execution telemetry is offloaded to Elastic Stack. This provides
+								complex data visualization, time-series aggregation, and
+								network-wide visibility long-term reporting.
+							</p>
+						</div>
+
+						<div class="flex flex-col gap-16 mt-8">
+							<div
+								class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-200"
+							>
+								<h3 class="text-2xl font-bold text-stone-800 mb-6">
+									Kibana: Unused Ports Dashboard
+								</h3>
+								<img
+									src="images/UnusedPorts.png"
+									alt="Kibana dashboard visualizing unused port metrics"
+									class="w-full h-auto rounded border border-stone-200 object-contain"
+								/>
+							</div>
+
+							<div
+								class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-200"
+							>
+								<h3 class="text-2xl font-bold text-stone-800 mb-6">
+									Kibana: Security Compliance Dashboard
+								</h3>
+								<img
+									src="images/SecurityCompliance.png"
+									alt="Kibana dashboard visualizing security compliance"
+									class="w-full h-auto rounded border border-stone-200 mb-8 object-contain"
+								/>
+								<div class="chart-container hidden" style="display: none">
+									<canvas id="complianceChart"></canvas>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -725,23 +804,30 @@
 						</div>
 						<p class="text-stone-700 text-base mb-6">
 							Acts as LDAP compatibility middleware bridging cloud identity with
-							legacy 802.1X.
+							NAC native LDAP services.
 						</p>
 						<ul class="text-sm text-stone-600 space-y-3 list-disc pl-4">
-							<li>Proxies LDAPS to Entra Domain Services.</li>
 							<li>
-								NAC provisions restricted 'Evaluating' policy upon initial
-								Accept.
+								NAC proxies 802.1X credential validation to Entra Domain
+								Services via NAC native LDAP services.
 							</li>
 							<li>
-								Graph API queried in near real-time. CoA transitions to
-								production upon compliance.
+								On successful validation, device is provisioned with a
+								restricted Evaluating policy pending compliance determination
 							</li>
-							<li>Inject access policies in NAC via NBI.</li>
+							<li>
+								The authentication event triggers an asynchronous Jython
+								workflow via NBI, passing the UPN and MAC address as runtime
+								variables to a Microsoft Graph OData query
+							</li>
+							<li>
+								Confirmed compliance instructs the NAC to issue a RADIUS CoA to
+								the edge switch, enabling network access.
+							</li>
 						</ul>
 					</div>
 
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div class="grid grid-cols-1 gap-6 flex-col">
 						<div
 							id="poc-1"
 							class="bg-white p-8 rounded-xl shadow-sm border border-stone-200"
@@ -754,13 +840,24 @@
 								via the NBI.
 							</p>
 							<ul class="text-sm text-stone-600 space-y-3 list-disc pl-4">
-								<li>Captive portal intercepts unauthenticated devices.</li>
-								<li>Forces native EntraID OAuth/SAML authentication.</li>
 								<li>
-									Middleware verifies Intune status via Graph API and issues
-									CoA.
+									Edge switch intercepts unauthenticated device, redirecting
+									HTTP traffic to middleware with the hardware MAC appended as a
+									signed URL parameter
 								</li>
-								<li>Inject access policies in NAC via NBI.</li>
+								<li>
+									Portal initiates a native Entra ID OAuth 2.0 authorisation
+									code flow, enforcing MFA and Conditional Access policies
+									natively before any network access is evaluated
+								</li>
+								<li>
+									Middleware queries Intune compliance via Graph API, using the
+									captured MAC address directly as the device identifier
+								</li>
+								<li>
+									Confirmed compliance instructs the NAC to issue a RADIUS CoA
+									to the edge switch, enabling network access
+								</li>
 							</ul>
 						</div>
 
@@ -777,37 +874,73 @@
 							</p>
 							<ul class="text-sm text-stone-600 space-y-3 list-disc pl-4">
 								<li>
-									Endpoint enrolls via SCEP, obtaining X.509 with Entra Device
-									ID.
+									Endpoint enrolls via SCEP; Intune issues an X.509 certificate
+									with the Entra Device ID embedded in the Subject Alternative
+									Name
 								</li>
-								<li>NAC acts as stateless RADIUS proxy.</li>
 								<li>
-									Remote service extracts Device ID, queries Intune, returns
-									Accept/Reject.
+									NAC operates as a stateless RADIUS proxy, forwarding EAP-TLS
+									frames to an external RADIUS instance.
 								</li>
-								<li>Inject access policies in NAC via NBI.</li>
+								<li>
+									External RADIUS instance terminates the TLS handshake,
+									extracts the Entra Device ID from the SAN, and queries Intune
+									for real-time compliance
+								</li>
+								<li>
+									External RADIUS instance returns a definitive Access-Accept or
+									Access-Reject response..
+								</li>
 							</ul>
 						</div>
 					</div>
 
-					<div class="mt-12 bg-white p-8 rounded-2xl shadow-sm border border-stone-200 text-left">
-						<h3 class="text-2xl font-bold text-stone-800 mb-6 text-center">Outcomes</h3>
+					<div id="outcomes" class="mt-12 bg-white p-8 rounded-2xl shadow-sm border border-stone-200 text-left scroll-mt-16">
+						<h3 class="text-2xl font-bold text-stone-800 mb-6 text-center">
+							Outcomes
+						</h3>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
-								<h4 class="font-bold text-lg text-purple-700 mb-2">Deterministic State Extraction</h4>
-								<p class="text-sm text-stone-700">Achieved complete state visibility across heterogeneous hardware, bypassing API fragmentation via a multi-protocol fallback architecture.</p>
+								<h4 class="font-bold text-lg text-purple-700 mb-2">
+									Deterministic State Extraction
+								</h4>
+								<p class="text-sm text-stone-700">
+									Achieved complete state visibility across heterogeneous
+									hardware, bypassing API fragmentation via a multi-protocol
+									fallback architecture.
+								</p>
 							</div>
 							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
-								<h4 class="font-bold text-lg text-purple-700 mb-2">Automated Remediation</h4>
-								<p class="text-sm text-stone-700">Deployed state-dependent configuration modules to programmatically enforce infrastructure policies and dynamically remediate operational anomalies across the multi-vendor fabric.</p>
+								<h4 class="font-bold text-lg text-purple-700 mb-2">
+									Automated Remediation
+								</h4>
+								<p class="text-sm text-stone-700">
+									Deployed state-dependent configuration modules to
+									programmatically enforce infrastructure policies and
+									dynamically remediate operational anomalies across the
+									multi-vendor fabric.
+								</p>
 							</div>
 							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
-								<h4 class="font-bold text-lg text-purple-700 mb-2">Decoupled Observability</h4>
-								<p class="text-sm text-stone-700">Established a centralized telemetry pipeline utilizing Elasticsearch and Kibana to create custom dashboards, enable long-term historical analytics and time-series network visibility.</p>
+								<h4 class="font-bold text-lg text-purple-700 mb-2">
+									Decoupled Observability
+								</h4>
+								<p class="text-sm text-stone-700">
+									Established a centralized telemetry pipeline utilizing
+									Elasticsearch and Kibana to create custom dashboards, enable
+									long-term historical analytics and time-series network
+									visibility.
+								</p>
 							</div>
 							<div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
-								<h4 class="font-bold text-lg text-purple-700 mb-2">NAC Zero-Caching Foundation</h4>
-								<p class="text-sm text-stone-700">Engineered three distinct architectural frameworks designed to eliminate persistent NAC database caching, establishing the logic for stateless zero-trust enforcement.</p>
+								<h4 class="font-bold text-lg text-purple-700 mb-2">
+									NAC Zero-Caching Foundation
+								</h4>
+								<p class="text-sm text-stone-700">
+									Engineered three distinct architectural frameworks designed to
+									eliminate persistent NAC database caching, establishing the
+									logic for stateless zero-trust enforcement.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -815,8 +948,7 @@
 			</section>
 		</main>
 
-		<footer class="bg-stone-900 py-8 border-t border-stone-800">
-		</footer>
+		<footer class="bg-stone-900 py-8 border-t border-stone-800"></footer>
 
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
@@ -850,23 +982,23 @@
 				});
 
 				// Scroll Spy for Navigation Highlighting
-				const sections = document.querySelectorAll("header[id], section[id]");
+				const sections = document.querySelectorAll("header[id], section[id], div[id]");
 				const navLinks = document.querySelectorAll(".nav-item");
 
 				const observerOptions = {
 					root: null,
-					rootMargin: "0px",
-					threshold: 0.4
+					rootMargin: "-80px 0px -60% 0px",
+					threshold: 0,
 				};
 
 				const observer = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
+					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
 							// Find corresponding nav link
 							const targetId = entry.target.id;
 							let activeLink = null;
-							
-							navLinks.forEach(link => {
+
+							navLinks.forEach((link) => {
 								if (link.getAttribute("href") === `#${targetId}`) {
 									activeLink = link;
 								}
@@ -874,7 +1006,7 @@
 
 							if (activeLink) {
 								// Reset all links to inactive state
-								navLinks.forEach(link => {
+								navLinks.forEach((link) => {
 									link.classList.remove("text-purple-600", "font-bold");
 									link.classList.add("text-stone-600", "font-medium");
 								});
@@ -887,10 +1019,12 @@
 					});
 				}, observerOptions);
 
-				sections.forEach(sec => {
+				sections.forEach((sec) => {
 					// We only want to observe sections that have a corresponding nav link
-					const matchingLink = document.querySelector(`.nav-item[href="#${sec.id}"]`);
-					if(matchingLink) {
+					const matchingLink = document.querySelector(
+						`.nav-item[href="#${sec.id}"]`,
+					);
+					if (matchingLink) {
 						observer.observe(sec);
 					}
 				});
