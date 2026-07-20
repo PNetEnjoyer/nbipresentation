@@ -211,7 +211,7 @@
 								const complexity = [20, 35, 50, 68, 82, 95];
 
 								// Realistic enterprise lead time for changes (in days)
-								const delivery = [180, 165, 140, 120, 100, 70];
+								const delivery = [180, 170, 160, 150, 130, 105];
 
 								const lastIdx = years.length - 1;
 
@@ -454,21 +454,38 @@
 								XIQ Site Engine
 							</h2>
 							<p class="text-stone-700 text-lg mb-6">
-								Operates as an on-premise Network Management System handling
-								device onboarding, providing a centralized management-plane, and
-								driving the integrated workflow engine, alarms, AAA, and
-								analytics. XIQ-SE is composed of several modules and appliances,
-								and each extends the capabilities of XIQ-SE.
+								Extreme Networks' on-premise Network Management System:
+								handles device onboarding and acts as the centralized
+								management-plane for alarms, AAA, and analytics. XIQ-SE is
+								composed of several cooperating modules and appliances. This
+								project leans on two of them in particular, the NBI for reading
+								network state and Tasks for running automation.
 							</p>
 							<img
 								src="images/xiqse.png"
 								alt="XIQ-SE internal structure detailing nsserver and appliances"
 								class="w-full max-w-4xl mx-auto h-auto rounded border border-stone-200 object-cover"
 							/>
-							<p class="text-xs text-stone-500 mt-3 text-center">
+							<p class="text-xs text-stone-500 mt-3 text-center mb-6">
 								Source: XIQ-SE - Installation & Configuration Student Guide,
 								2025 Extreme Networks
 							</p>
+							<div class="bg-stone-50 p-6 rounded-xl shadow-sm border border-purple-200 border-l-4 border-l-purple-600">
+	<h4 class="text-lg font-bold text-purple-700 mb-2">
+		Tasks — the Workflow Engine
+	</h4>
+	<p class="text-sm text-stone-700">
+		This is the module that actually runs the automation. Every
+		workflow in this project is a Python script (Jython 2.7)
+		executing natively inside XIQ-SE's Tasks module.
+	</p>
+	<!-- Placeholder for Workflow Editor WebUI Print -->
+	<img
+		src="images/workflowEditor.png"
+		alt="XIQ-SE Workflow Editor WebUI Pane"
+		class="w-full mt-4 h-auto rounded border border-stone-200 shadow-sm object-cover bg-white"
+	/>
+</div>
 						</div>
 					</div>
 				</div>
@@ -525,15 +542,26 @@
 						</div>
 					</div>
 
-					<div
-						class="bg-stone-800 text-stone-100 p-8 rounded-2xl min-h-[150px] flex items-center justify-center"
-					>
+					<div class="bg-stone-800 text-stone-100 rounded-2xl overflow-hidden">
 						<div
 							id="waterfall-description"
-							class="text-center text-lg max-w-2xl"
+							class="text-center text-lg max-w-2xl mx-auto p-8 min-h-[110px] flex items-center justify-center"
 						>
 							Select a stage in the waterfall architecture above to view
 							protocol fallback execution.
+						</div>
+						<div class="border-t border-stone-700 bg-stone-900 px-6 py-6 sm:px-8">
+							<div class="max-w-2xl mx-auto">
+								<p
+									class="text-xs font-semibold uppercase tracking-wider text-amber-500 mb-3"
+								>
+									Example
+								</p>
+								<pre
+									id="waterfall-example"
+									class="font-mono text-sm text-stone-200 whitespace-pre-wrap break-words leading-relaxed"
+								></pre>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -670,7 +698,7 @@
 					<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div class="mb-16 text-center">
 							<h2 class="text-3xl font-bold text-stone-900 mb-4">
-								Internal Visualization - Workflow Output
+								Integrated Visualization - Workflow Output
 							</h2>
 							<p class="text-lg text-stone-700 max-w-4xl mx-auto">
 								Automated workflow outputs are surfaced directly within the
@@ -707,7 +735,7 @@
 
 						<div class="mb-10 text-center border-t border-stone-200 pt-16">
 							<h2 class="text-3xl font-bold text-stone-900 mb-4">
-								Internal Visualization - Alarms
+								Integrated Visualization - Alarms
 							</h2>
 							<p class="text-lg text-stone-700 max-w-4xl mx-auto">
 								Dispatched events trigger localized near real-time operational
@@ -787,11 +815,7 @@
 							Cloud Identity & NAC Zero-Caching Foundation
 						</h2>
 						<p class="text-lg text-stone-700 max-w-4xl mx-auto">
-							Current NAC implementations incur operational latency through
-							persistent database caching. Workflows were developed utilizing
-							the Microsoft Graph API to extract user identities from EntraID
-							and compliance policies from Intune, establishing a stateless
-							enforcement pipeline.
+							Current NAC implementations rely on persistent database caching, resulting in redundant identity duplication between the primary cloud identity provider and the local NAC appliance. To address this, three distinct architectural frameworks were modeled to establish the logic for a stateless enforcement pipeline. These models represent theoretical architectures; the proposed zero-caching mechanisms were not actively deployed or tested in the laboratory environment.
 						</p>
 					</div>
 
@@ -856,7 +880,7 @@
 								</li>
 								<li>
 									Confirmed compliance instructs the NAC to issue a RADIUS CoA
-									to the edge switch, enabling network access
+									to the edge switch, enabling network access.
 								</li>
 							</ul>
 						</div>
@@ -880,7 +904,7 @@
 								</li>
 								<li>
 									NAC operates as a stateless RADIUS proxy, forwarding EAP-TLS
-									frames to an external RADIUS instance.
+									packets to an external RADIUS instance.
 								</li>
 								<li>
 									External RADIUS instance terminates the TLS handshake,
@@ -888,8 +912,8 @@
 									for real-time compliance
 								</li>
 								<li>
-									External RADIUS instance returns a definitive Access-Accept or
-									Access-Reject response..
+									External RADIUS instance returns a Access-Accept or
+									Access-Reject response.
 								</li>
 							</ul>
 						</div>
@@ -953,26 +977,84 @@
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
 				const steps = {
-					"step-nbi":
-						"NBI (GraphQL): Prioritized for minimal latency and centralized querying. Schema heavily favors native Extreme hardware. Frequently omits deep diagnostic data for third-party endpoints.",
-					"step-rest":
-						"RESTCONF: Standardized YANG data models. Validation reveals unresolved hierarchical paths across disparate firmware versions, yielding HTTP 401/404 errors.",
-					"step-rpc":
-						"JSON-RPC: Translates CLI command structures into native JSON. Efficacy restricted exclusively to specific vendor operating systems (EXOS).",
-					"step-cli":
-						"CLI (Regex): Direct SSH terminal parsing. Implemented when modern APIs fail or to extract parameters unmapped by standard models, including on bleeding-edge hardware. Ensures absolute state extraction.",
+					"step-nbi": {
+						text: "NBI (GraphQL): Centralized GraphQL querying against the primary XIQ-SE database. Better support for native Extreme hardware. Frequently omits data for third-party endpoints.",
+						example: `
+{
+  network {
+    device(ip: "192.168.2.8") {
+      sysName
+      entityData {
+        allPorts {
+          ifName
+        }
+      }
+    }
+  }
+}
+
+→ {
+  "data": {
+    "network": {
+      "device": {
+        "sysName": "ExosLeftTop",
+        "entityData": {
+          "allPorts": [
+            {
+              "ifName": "1:24"
+            },
+	    ...
+	    }
+          ]
+        }
+      }
+    }
+  }
+}
+`,
+					},
+					"step-rest": {
+						text: "RESTCONF: Standardized YANG data models. Validation reveals unresolved hierarchical paths across disparate firmware versions, yielding HTTP 401/404 errors.",
+						example: `GET /rest/restconf/data/
+    openconfig-system:system/logging/console/state
+
+→ { "openconfig-system:state": { "enabled": true } }`,
+					},
+					"step-rpc": {
+						text: "JSON-RPC: Translates CLI command structures into native JSON. Is specific to EXOS operating system.",
+						example: `Command: show log configuration target memory-buffer
+
+→ { 
+	"Log Target\\t: memory-buffer\\nEnabled\\t: yes", 
+	"target": "memory-buffer",
+	"enabled": "yes" 
+}`,
+					},
+					"step-cli": {
+						text: "CLI: Direct SSH terminal parsing. Implemented when modern APIs fail or to extract parameters unmapped by standard models. Ensures state extraction.",
+						example: `$ show log configuration target memory-buffer
+
+
+→ Log Target : memory-buffer
+Enabled    : yes
+
+`,
+					},
 				};
 
 				const descriptionBox = document.getElementById("waterfall-description");
+				const exampleBox = document.getElementById("waterfall-example");
 				const stepElements = document.querySelectorAll(".waterfall-step");
 
-				descriptionBox.innerHTML = steps["step-nbi"];
+				descriptionBox.innerHTML = steps["step-nbi"].text;
+				exampleBox.textContent = steps["step-nbi"].example;
 
 				stepElements.forEach((step) => {
 					step.addEventListener("click", () => {
 						stepElements.forEach((el) => el.classList.remove("active"));
 						step.classList.add("active");
-						descriptionBox.innerHTML = steps[step.id];
+						descriptionBox.innerHTML = steps[step.id].text;
+						exampleBox.textContent = steps[step.id].example;
 						descriptionBox.classList.add("animate-pulse");
 						setTimeout(
 							() => descriptionBox.classList.remove("animate-pulse"),
